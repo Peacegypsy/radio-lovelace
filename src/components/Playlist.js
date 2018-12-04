@@ -26,14 +26,15 @@ const calculatePlayTime = tracks => {
 };
 
 const Playlist = props => {
+  console.log(props);
   const tracks = props.tracks;
-  console.log(props.favorite);
   const trackCount = tracks.length;
+  const checkedCallback = props.checkedCallback;
   const playtime = calculatePlayTime(tracks);
   const trackElements = tracks.map((track, i) => {
     // We use "spread syntax" here to pass in all the properties of
     // the variable 'track' as props. Go look it up!
-    return <Track key={i} {...track} />;
+    return <Track key={i} checkedCallback={checkedCallback} {...track} />;
   });
 
   return (

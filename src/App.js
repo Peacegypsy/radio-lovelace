@@ -18,6 +18,9 @@ class App extends Component {
       };
     });
   }
+  onItemChecked = () => {
+    this.setState({ favorite: true });
+  };
   render() {
     return (
       <div className="App">
@@ -25,7 +28,7 @@ class App extends Component {
           <h1 className="page-header--title">Radio Lovelace</h1>
         </header>
         <main className="main">
-          <RadioSet tracks={songData} />
+          <RadioSet tracks={songData} checkedCallback={this.onItemChecked} />
         </main>
       </div>
     );

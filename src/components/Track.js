@@ -6,9 +6,17 @@ import "./styles/Track.css";
 // Here we use destructuring to extract the props into separate variables
 // See https://wesbos.com/destructuring-objects/
 
-const Track = ({ title, artist, playtime, albumart, state }) => {
+const Track = ({
+  title,
+  artist,
+  playtime,
+  albumart,
+  state,
+  checkedCallback
+}) => {
   const favorite = state.favorite;
   console.log(favorite);
+  console.log(checkedCallback);
   return (
     <li className="track">
       <img
@@ -17,7 +25,12 @@ const Track = ({ title, artist, playtime, albumart, state }) => {
         src={albumart}
       />
       <h3 className="track--title">{title}</h3>
-      <input type="checkbox" className="track--favorite" checked={!favorite} />
+      <input
+        type="checkbox"
+        id="favorite"
+        className="track--favorite"
+        checked={!favorite}
+      />
 
       <p className="track--artist">{artist}</p>
       <p className="track--playtime">{playtime}</p>
