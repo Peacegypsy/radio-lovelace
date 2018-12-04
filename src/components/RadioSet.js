@@ -1,25 +1,23 @@
-import React from 'react';
+import React from "react";
 import "./styles/RadioSet.css";
 
-import Playlist from './Playlist';
+import Playlist from "./Playlist";
 
-const RadioSet = (props) => {
+const RadioSet = props => {
   console.log(`Radio set for ${props.tracks.length} tracks`);
+  console.log(`favorite ${props.tracks[0].state.favorite}`);
   const playlists = {
     morningTracks: props.tracks.slice(0, props.tracks.length / 2),
-    eveningTracks: props.tracks.slice(props.tracks.length / 2, props.tracks.length)
+    eveningTracks: props.tracks.slice(
+      props.tracks.length / 2,
+      props.tracks.length
+    )
   };
   return (
     <div className="radio-set">
       <section className="radio-set--playlist-container">
-        <Playlist
-          side="Morning"
-          tracks={playlists.morningTracks}
-        />
-        <Playlist
-          side="Evening"
-          tracks={playlists.eveningTracks}
-        />
+        <Playlist side="Morning" tracks={playlists.morningTracks} />
+        <Playlist side="Evening" tracks={playlists.eveningTracks} />
       </section>
     </div>
   );
