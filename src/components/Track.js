@@ -28,6 +28,7 @@ const Track = ({
       <input
         type="checkbox"
         id="favorite"
+        onChange={checkedCallback}
         className="track--favorite"
         checked={!favorite}
       />
