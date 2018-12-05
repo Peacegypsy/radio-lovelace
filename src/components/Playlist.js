@@ -35,11 +35,14 @@ const Playlist = props => {
     // We use "spread syntax" here to pass in all the properties of
     // the variable 'track' as props. Go look it up!
     return (
-      <div >
-  <Track
-    key={`${track.title} ${track.artist}`} checkedCallback={checkedCallback}
-    {...track}
-  />,
+      <Track
+        key={`${track.title} ${track.artist}`}
+        checkedCallback={checkedCallback}
+        {...track}
+      />
+    );
+  });
+  return (
     <div className="playlist">
       <h2>{props.side} Playlist</h2>
       <p>
@@ -47,9 +50,8 @@ const Playlist = props => {
       </p>
       <ul className="playlist--track-list">{trackElements}</ul>
     </div>
-    </div>
-  )
-}
+  );
+};
 
 Playlist.propTypes = {
   tracks: PropTypes.array,
