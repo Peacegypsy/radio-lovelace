@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./styles/Playlist.css";
-
 import Track from "./Track";
 
 const calculatePlayTime = tracks => {
@@ -29,16 +28,20 @@ const Playlist = props => {
   console.log(props);
   const tracks = props.tracks;
   const trackCount = tracks.length;
-  const checkedCallback = props.checkedCallback;
+  // const checkedCallback = props.checkedCallback;
   const playtime = calculatePlayTime(tracks);
   const trackElements = tracks.map((track, i) => {
     // We use "spread syntax" here to pass in all the properties of
     // the variable 'track' as props. Go look it up!
     return (
       <Track
-        key={`${track.title} ${track.artist}`}
-        checkedCallback={checkedCallback}
+        key={i}
+        // key={`${track.title} ${track.artist}`}
+        // checkedCallback={checkedCallback}
         {...track}
+        toggleFavorite={() => props.toggleFavorite(i)}
+        sendToTop={() => props.sendToTop(i)}
+        switchLists={() => props.switchLists(i)}
       />
     );
   });
@@ -55,7 +58,10 @@ const Playlist = props => {
 
 Playlist.propTypes = {
   tracks: PropTypes.array,
-  side: PropTypes.string
+  side: PropTypes.string,
+  toggleFavorite: PropTypes.func,
+  switchLists: PropTypes.func,
+  sendToTop: PropTypes.func
 };
 
 export default Playlist;

@@ -12,11 +12,13 @@ const Track = ({
   playtime,
   albumart,
   state,
-  checkedCallback
+  toggleFavorite,
+  switchLists,
+  sendToTop
 }) => {
   const favorite = state.favorite;
   console.log(favorite);
-  console.log(checkedCallback);
+  console.log();
   return (
     <li className="track">
       <img
@@ -27,10 +29,9 @@ const Track = ({
       <h3 className="track--title">{title}</h3>
       <input
         type="checkbox"
-        id="favorite"
-        onChange={checkedCallback}
         className="track--favorite"
         checked={!favorite}
+        onChange={toggleFavorite}
       />
 
       <p className="track--artist">{artist}</p>
@@ -54,7 +55,10 @@ Track.propTypes = {
   artist: PropTypes.string,
   playtime: PropTypes.string,
   albumart: PropTypes.string,
-  favorite: PropTypes.bool
+  favorite: PropTypes.bool,
+  toggleFavorite: PropTypes.func.isRequired,
+  switchLists: PropTypes.func.isRequired,
+  sendToTop: PropTypes.func.isRequired
 };
 
 export default Track;
